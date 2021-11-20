@@ -316,8 +316,8 @@ include $(BUILD_SYSTEM)/envsetup.mk
 FIND_LEAVES_EXCLUDES := $(addprefix --prune=, $(SCAN_EXCLUDE_DIRS) .repo .git)
 
 -include vendor/extra/BoardConfigExtra.mk
-ifneq ($(GK_BUILD),)
-include vendor/gk/config/BoardConfigGengkapak.mk
+ifneq ($(GENGKAPAK_BUILD),)
+include vendor/gengkapak/config/BoardConfigGengkapak.mk
 endif
 
 # The build system exposes several variables for where to find the kernel
@@ -1169,11 +1169,11 @@ dont_bother_goals := out \
 # consistency with those defined in BoardConfig.mk files.
 include $(BUILD_SYSTEM)/android_soong_config_vars.mk
 
-ifneq ($(GK_BUILD),)
-ifneq ($(wildcard device/gk/sepolicy/common/sepolicy.mk),)
+ifneq ($(GENGKAPAK_BUILD),)
+ifneq ($(wildcard device/gengkapak/sepolicy/common/sepolicy.mk),)
 ## We need to be sure the global selinux policies are included
 ## last, to avoid accidental resetting by device configs
-$(eval include device/gk/sepolicy/common/sepolicy.mk)
+$(eval include device/gengkapak/sepolicy/common/sepolicy.mk)
 endif
 endif
 

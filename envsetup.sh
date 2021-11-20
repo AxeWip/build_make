@@ -147,12 +147,12 @@ function check_product()
         echo "Couldn't locate the top of the tree.  Try setting TOP." >&2
         return
     fi
-    if (echo -n $1 | grep -q -e "^gk_") ; then
-        GK_BUILD=$(echo -n $1 | sed -e 's/^gk_//g')
+    if (echo -n $1 | grep -q -e "^gengkapak_") ; then
+        GENGKAPAK_BUILD=$(echo -n $1 | sed -e 's/^gengkapak_//g')
     else
-        GK_BUILD=
+        GENGKAPAK_BUILD=
     fi
-    export GK_BUILD
+    export GENGKAPAK_BUILD
 
         TARGET_PRODUCT=$1 \
         TARGET_BUILD_VARIANT= \
@@ -1855,7 +1855,7 @@ export ANDROID_BUILD_TOP=$(gettop)
 
 function repopick() {
     T=$(gettop)
-    $T/vendor/gk/build/tools/repopick.py $@
+    $T/vendor/gengkapak/build/tools/repopick.py $@
 }
 
 validate_current_shell
